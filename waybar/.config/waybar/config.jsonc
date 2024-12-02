@@ -1,0 +1,92 @@
+{
+  "position": "top",
+  "modules-left": ["cpu","custom/gpu","memory","network", "hyprland/window"],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["tray", "pulseaudio","bluetooth", "custom/brightness", "idle_inhibitor", "clock"],
+  "clock": {
+    "format": "   {:%I:%M %p       %m/%d/%Y}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": " ",
+        "deactivated": " "
+    },
+    "timeout": 60,
+    "max-length": 10
+  },
+  
+  
+  "network": {
+    "format-wifi": "    {bandwidthUpBits}    {bandwidthDownBits}  " ,
+    "format-ethernet": "<span size='13000' foreground='#11111b'>󰤭  </span> Disconnected",
+    "format-linked": "{ifname} (No IP)  ",
+    "format-disconnected": "<span size='13000' foreground='#11111b'>  </span>Disconnected",
+    "tooltip-format-wifi": "SSID: {essid}  |  Signal Strength: {signalStrength}%  |  IP: {ipaddr}",
+    "on-click": "nm-applet"
+  },
+  
+
+
+  "pulseaudio": {
+      "format": "{icon}   {volume}%",
+      "format-muted": " ",
+      "format-icons": {
+          "default": ["", " ", " "]
+      },
+      "on-click": "pavucontrol"
+  },
+  "bluetooth": {
+	// "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+	"format": "  {status}",
+	"format-disabled": "󰂲  {status}", // an empty format will hide the module
+	"format-connected": "󰂱  {num_connections} connected",
+	"tooltip-format": "{controller_alias}\t{controller_address}",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click": "blueman-manager"
+  },
+  "tray": {
+        "icon-size": 18,
+        "spacing": 10
+  },
+  "wlr/taskbar": {
+      "format": "{icon}",
+      "icon-size": {},
+      "icon-theme": "${i_theme}",
+      "spacing": 0,
+      "tooltip-format": "{title}",
+      "on-click": "activate",
+      "on-click-middle": "close",
+      "on-click-right": "fullscreen"
+  },
+
+  "cpu": {
+      "interval": 15,
+      "format": "   {}%",
+      "max-length": 10
+  },
+  "memory": {
+      "interval": 30,
+      "format": "   {}%",
+      "max-length": 10
+  },
+  "custom/gpu": {
+      "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits",
+      "format": "<span size='13000' foreground='#fab387'>󰢮 </span>{}%",
+      "return-type": "",
+      "interval": 15,
+      "max-length": 10
+  },
+  "custom/brightness": {
+      "exec": "/home/rfagerli/.userscripts/brightct.sh",
+      "format": "󰃠   {}%",
+      "return-type": "",
+      "interval": 60,
+      "max-length": 10
+  }
+  
+
+}
