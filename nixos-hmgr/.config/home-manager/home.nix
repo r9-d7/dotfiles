@@ -104,6 +104,7 @@
         }
 
         vim-nix
+        transparent-nvim
 
         #{
         #   plugin = nixpkgs.vimPlugins.own-onedark-nvim;
