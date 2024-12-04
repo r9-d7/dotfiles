@@ -34,6 +34,27 @@ return {
     -- other plugins
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig"
+    "neovim/nvim-lspconfig",
+    "folke/neodev.nvim",
 
+    {
+	'hrsh7th/nvim-cmp',
+	dependencies = {
+	    'L3M0N4D3/LuaSnip',
+	    'saadparwaiz1/cmp_luasnip',
+	    'rafamadriz/friendly-snippets',
+
+	    'hrsh7th/cmp-nvim-lsp',
+        },
+    },
+
+    {
+	'nvim-telescope/telescope-fzf-native.nvim',
+	build = 'make',
+    },
+    
+    {
+	'nvim-treesitter/nvim-treesitter',
+	build = ':TSUpdate',
+    }
 }
