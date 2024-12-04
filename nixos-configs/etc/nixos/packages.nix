@@ -1,8 +1,10 @@
 { config, lib, pkgs, ... }:
-
+let
+  sources = import ./npins;
+in
 {
   nixpkgs.config.allowUnfree = true;
-  
+    
   # Nix Packages
   environment.systemPackages = with pkgs; [
     vim
@@ -26,6 +28,7 @@
     pavucontrol
     python313
     nitch
+    papirus-icon-theme
   ];
 
   # Programs
@@ -45,5 +48,11 @@
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "CascadiaCode" ]; })
   ];
+  
+  # Catppuccin Theme
+  imports = [
+    (sources.catppuccin + "/modules/nixos")
+    <home-manager/nixos>
+  ]; 
 }
     
